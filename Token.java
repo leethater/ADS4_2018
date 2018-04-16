@@ -4,6 +4,10 @@ public class Token{
   public Token(Sym sym){
     this.sym=sym;
   }
+
+  public Sym getSym(){
+    return this.sym;
+  }
 }
 
 public class NumberToken extends Token{
@@ -13,6 +17,11 @@ public class NumberToken extends Token{
     super(Sym.NUM);
     this.value=value;
   }
+
+  public int getValue(){
+    return this.value;
+  }
+
 }
 
 public class WordToken extends Token{

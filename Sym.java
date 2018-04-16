@@ -17,6 +17,7 @@ public enum Sym{
   DIV,
   MULT,
   COMMA,
+  SEMIC,
   LPAR,
   RPAR;
 }

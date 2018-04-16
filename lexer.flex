@@ -10,8 +10,8 @@
 
 %{
   class LexerException extends Exception{
-    public LexerException(int line, int column, Token tok){
-      super("Le caractere "+caract.replace("\\","\\\\")+" a la ligne "+line+" et a la colonne "+column+" n'est pas reconnu.");
+    public LexerException(int line, int column){
+      super("Char "+caract.replace("\\","\\\\")+" at line "+line+" not recognized");
     }
   }
 %}
@@ -46,5 +46,6 @@ ident = [a-z][a-zA-Z_]*
 "(" {return new Token(Sym.LPAR);}
 ")" {return new Token(Sym.RPAR);}
 "," {return new Token(Sym.COMMA);}
+";" {return new Token(Sym.SEMIC);}
 {blanc} {}
-[^] {throw new LexerException(yyline, yycolumn, yytext());}
+[^] {throw new LexerException(yyline, yycolumn);}
