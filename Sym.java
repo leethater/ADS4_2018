@@ -1,3 +1,22 @@
 public enum Sym{
-  NUM,BEGIN,DRAWC,DRAWR,FILLC,FILLR,FILLC,END,CCOL,PLUS,MINUS,DIV,MULT,LPAR,RPAR;
+  NUM,
+  BEGIN,
+  END,
+  IF,
+  THEN,
+  ELSE,
+  DRAWC,
+  DRAWR,
+  FILLC,
+  FILLR,
+  FILLC,
+  END,
+  COL,
+  PLUS,
+  MINUS,
+  DIV,
+  MULT,
+  COMMA,
+  LPAR,
+  RPAR;
 }
