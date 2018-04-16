@@ -18,6 +18,15 @@ class LookAhead1  {
           return (current.symbol() == s);
     }
 
+    public Token getCurrent(){
+      return current;
+    }
+
+    public Lexer getLexer(){
+      return lexer;
+    }
+
+
     public void eat(Sym s)
 	throws Exception {
 	/* consumes a token of type s from the stream,
@@ -31,7 +40,7 @@ class LookAhead1  {
         current=lexer.yylex();
    }
 
-    public String getValue()
+  /*  public String getValue()
     throws Exception {
     // it gives the value of the ValuedToken, or it rises an exception if not ValuedToken
     	if (current instanceof ValuedToken) {
@@ -41,7 +50,7 @@ class LookAhead1  {
 	    throw new Exception("\n"+ lexer.getPosition()+": LookAhead error: get value from a non-valued token");
     	}
 
-    }
+    }*/
 
     public boolean isEmpty(){
       return current==null;
