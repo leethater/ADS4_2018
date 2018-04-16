@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class Main {
 
-    private static void initAndShow(String filename) {
+  /*  private static void initAndShow(String filename) {
         JFrame frame = new JFrame("ADS4");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -14,15 +14,28 @@ public class Main {
 
         frame.pack();
         frame.setVisible(true);
-    }
+    }*/
 
     public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+      /*  javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 initAndShow(args[0]);
             }
         });
-    }
+    }*/
+    File input = new File(args[0]);
+    try {
+    Reader reader = new FileReader(input);
+    Lexer lexer = new Lexer(reader);
+    LookAhead1 look = new LookAhead1(lexer);
+    Parser parser = new Parser(look);
+        AST ast=parser.progNotTerm();
+        System.out.println("The file is correct");
+      }
+      catch (Exception e){
+        System.out.println("The file is not correct");
+        e.printStackTrace();
+      }
 }
 
 @SuppressWarnings("serial")
@@ -36,9 +49,17 @@ class MyCanvas extends JComponent {
 
   @Override
   public void paintComponent(Graphics g) {
-    if (g instanceof Graphics2D)
+    /*if (g instanceof Graphics2D)
     {
       Graphics2D g2d = (Graphics2D)g;
+      if (args.length <1) {
+    		System.out.println("java Main <namefile>");
+    		System.exit(1);
+    	}
+
+
+    }*/
+  }
 
       // A compléter.
       // Appelez ici votre analyseur et interpréteur, en leur fournissant
@@ -57,5 +78,3 @@ class MyCanvas extends JComponent {
 
     }
   }
-
-}

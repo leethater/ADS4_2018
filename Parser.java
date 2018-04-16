@@ -22,16 +22,17 @@ class Parser{
 
 
 public AST progNotTerm() throws Exception{
-  List<Instruction> list=instructionsList();
+  List<Instruction> list=instructionsList(new ArrayList<Instruction>());
+  if(!reader.isEmpty()) throw new ParserException(reader.getLexer().getPosition()+"  Not valid end of file");
   return new AST(list);
 }
 
-public Instruction instruction(){
+public Instruction instruction() throws Exception{
   Instruction i;
   if(reader.check(Sym.BEGIN)){
     Token b=reader.getCurrent();
     reader.eat(Sym.BEGIN);
-    List<Instruction> l=instructionsList();
+    List<Instruction> l=instructionsList(new ArrayList<Instruction>());
     Token b2=reader.getCurrent();
     reader.eat(Sym.END);
     i=new SuperInstruction(b,b2,l);
@@ -71,11 +72,13 @@ public Instruction instruction(){
 }
 
 
-public List<Instruction> instructionsList(List<Instruction> l){
+public List<Instruction> instructionsList(List<Instruction> l) throws Exception{
   Instruction i=this.instruction();
   l.add(i);
   reader.eat(Sym.SEMIC);
-  if(!reader.isEmpty()) instructionsList(l);
+  if(!reader.isEmpty() && !reader.check(Sym.END)){
+    instructionsList(l);
+  }
   return l;
 }
 
@@ -86,18 +89,19 @@ public Expression expr() throws Exception{
     reader.eat(Sym.NUM);
     NumberToken n=(NumberToken)t;
     e=new IntExpression(n);
+  }
   else{
     reader.eat(Sym.LPAR);
     Expression e1=expr();
     Token o=reader.getCurrent();
     switch(o.getSym()){
-      case Sym.PLUS: reader.eat(Sym.PLUS);
+      case PLUS: reader.eat(Sym.PLUS);
         break;
-      case Sym.MINUS: reader.eat(Sym.MINUS);
+      case MINUS: reader.eat(Sym.MINUS);
         break;
-      case Sym.MULT:reader.eat(Sym.MULT);
+      case MULT:reader.eat(Sym.MULT);
         break;
-      case Sym.DIV: reader.eat(Sym.DIV);
+      case DIV: reader.eat(Sym.DIV);
         break;
       default: throw new ParserException(reader.getLexer().getPosition()+"  Not valid operator encountered !");
     }
@@ -106,4 +110,5 @@ public Expression expr() throws Exception{
     e=new ExpressionPlus(e1,e2,o);
 }
 return e;
+}
 }

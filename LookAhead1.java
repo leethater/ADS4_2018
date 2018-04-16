@@ -15,7 +15,7 @@ class LookAhead1  {
     public boolean check(Sym s)
 	throws Exception {
 	/* check whether the first character is of type s*/
-          return (current.symbol() == s);
+          return (current.getSym() == s);
     }
 
     public Token getCurrent(){
@@ -35,7 +35,7 @@ class LookAhead1  {
 	    throw new Exception("\n" + lexer.getPosition()+": Can't eat "+s+" current being "+current);
 	}
 		//for debug
-	//	System.out.println(current);
+	   System.out.println(current);
 
         current=lexer.yylex();
    }

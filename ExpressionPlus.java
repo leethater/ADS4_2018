@@ -12,10 +12,10 @@ public class ExpressionPlus extends Expression{
     int a=expr1.value(),b=expr2.value();
     Sym sym=operator.getSym();
     switch(sym){
-      case Sym.PLUS: return a+b;
-      case Sym.MINUS: return a-b;
-      case Sym.MULT: return a*b;
-      case Sym.DIV: return a/b;
+      case PLUS: return a+b;
+      case MINUS: return a-b;
+      case MULT: return a*b;
+      case DIV: return a/b;
     }
     return Integer.MIN_VALUE;
   }

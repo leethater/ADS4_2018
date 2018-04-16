@@ -9,8 +9,6 @@ public enum Sym{
   DRAWR,
   FILLC,
   FILLR,
-  FILLC,
-  END,
   COL,
   PLUS,
   MINUS,

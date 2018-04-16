@@ -10,18 +10,22 @@
 
 %{
   class LexerException extends Exception{
-    public LexerException(int line, int column){
-      super("Char "+caract.replace("\\","\\\\")+" at line "+line+" not recognized");
+    public LexerException(int line, int column, String c){
+      super("Line :"+line+" Column : "+column+" Character : "+c);
     }
   }
+
+  public String getPosition(){
+       return "Reading at line "+yyline+", column "+yycolumn;
+    }
 %}
 
-blank = [\n\r \t]
+
+blank=" "|"\n"|"\t"|"\r"
 number=[0-9]+
 hex=[0-9A-F]
 color=#{hex}{hex}{hex}{hex}{hex}{hex}
 operator="+"|"-"|"/"|"*"
-keyword=[A-Z][a-zA-Z]*
 ident = [a-z][a-zA-Z_]*
 
 %%
@@ -33,9 +37,8 @@ ident = [a-z][a-zA-Z_]*
 "DrawCircle" {return new Token(Sym.DRAWC);}
 "FillCircle" {return new Token(Sym.FILLC);}
 "DrawRect" {return new Token(Sym.DRAWR);}
-"FillCircle" {return new Token(Sym.FILLR);}
+"FillRect" {return new Token(Sym.FILLR);}
 
-{keyword} {return new WordToken(yytext());}
 {color} {return new ColorToken(yytext());}
 {number} {return new NumberToken(Integer.parseInt(yytext()));}
 
@@ -47,5 +50,5 @@ ident = [a-z][a-zA-Z_]*
 ")" {return new Token(Sym.RPAR);}
 "," {return new Token(Sym.COMMA);}
 ";" {return new Token(Sym.SEMIC);}
-{blanc} {}
-[^] {throw new LexerException(yyline, yycolumn);}
+{blank} {}
+[^] {throw new LexerException(yyline, yycolumn,yytext());}

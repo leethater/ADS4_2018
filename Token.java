@@ -1,4 +1,4 @@
-public class Token{
+ class Token{
   protected Sym sym;
 
   public Token(Sym sym){
@@ -8,12 +8,16 @@ public class Token{
   public Sym getSym(){
     return this.sym;
   }
+
+  public String toString(){
+    return (" "+sym);
+  }
 }
 
-public class NumberToken extends Token{
+class NumberToken extends Token{
   protected int value;
 
-  private NumberToken(int value){
+  public NumberToken(int value){
     super(Sym.NUM);
     this.value=value;
   }
@@ -24,7 +28,7 @@ public class NumberToken extends Token{
 
 }
 
-public class WordToken extends Token{
+class WordToken extends Token{
   protected String content;
 
   public WordToken(Sym sym,String content){
@@ -33,7 +37,7 @@ public class WordToken extends Token{
   }
 }
 
-public class ColorToken extends Token{
+ class ColorToken extends Token{
   protected String color;
   protected int red;
   protected int green;
@@ -42,7 +46,7 @@ public class ColorToken extends Token{
   public ColorToken(String color){
     super(Sym.COL);
     this.color=color;
-    fillColors();[^] {}
+    fillColors();
   }
 
   private void fillColors(){
@@ -51,7 +55,7 @@ public class ColorToken extends Token{
     String b = color.substring(5,6);
     this.red = Integer.parseInt(r, 16);
     this.green = Integer.parseInt(g, 16);
-    this.blue = Integet.parseInt(b, 16);
+    this.blue = Integer.parseInt(b, 16);
   }
 
 

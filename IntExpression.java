@@ -1,4 +1,4 @@
-public class IntExpression{
+public class IntExpression extends Expression{
   protected NumberToken token;
 
   public IntExpression(NumberToken token){
