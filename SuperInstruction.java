@@ -11,8 +11,8 @@ public class SuperInstruction extends Instruction{
     instructions=l;
   }
 
-  public void execute(Graphics2D g) throws DeclarationException{
-    for(Instruction i:instructions) i.execute(g,dec);
+  public void execute(Graphics2D g){
+    for(Instruction i:instructions) i.execute(g);
   }
 
   public String toString(){

@@ -12,7 +12,7 @@ public class LineInstruction extends Instruction{
     color=c;
   }
 
-  public void execute(Graphics2D g) throws DeclarationException{
+  public void execute(Graphics2D g){
     int[] rgb=color.rgb();
     g.setColor(new Color(rgb[0],rgb[1],rgb[2]));
     switch(method.getSym()){
