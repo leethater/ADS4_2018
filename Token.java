@@ -50,12 +50,21 @@ class WordToken extends Token{
   }
 
   private void fillColors(){
-    String r = color.substring(1,2);
-    String g = color.substring(3,4);
-    String b = color.substring(5,6);
+    String r = color.substring(1,3);
+    String g = color.substring(3,5);
+    String b = color.substring(5,7);
     this.red = Integer.parseInt(r, 16);
     this.green = Integer.parseInt(g, 16);
     this.blue = Integer.parseInt(b, 16);
+  }
+
+  public int[] rgb(){
+    int[] rgb={red,green,blue};
+    return rgb;
+  }
+
+  public String toString(){
+    return super.toString()+" "+red+" "+green+" "+blue;
   }
 
 

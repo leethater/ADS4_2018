@@ -35,7 +35,7 @@ class LookAhead1  {
 	    throw new Exception("\n" + lexer.getPosition()+": Can't eat "+s+" current being "+current);
 	}
 		//for debug
-	   System.out.println(current);
+	  // System.out.println(current);
 
         current=lexer.yylex();
    }
