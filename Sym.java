@@ -16,6 +16,9 @@ public enum Sym{
   MULT,
   COMMA,
   SEMIC,
+  EQUALS,
+  IDENT,
+  CONST,
   LPAR,
   RPAR;
 }
