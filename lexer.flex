@@ -38,9 +38,11 @@ ident = [a-z][a-zA-Z_]*
 "FillCircle" {return new Token(Sym.FILLC);}
 "DrawRect" {return new Token(Sym.DRAWR);}
 "FillRect" {return new Token(Sym.FILLR);}
+"Const" {return new Token(Sym.CONST);}
 
 {color} {return new ColorToken(yytext());}
 {number} {return new NumberToken(Integer.parseInt(yytext()));}
+{ident} {return new WordToken(Sym.IDENT, yytext());}
 
 "+" {return new Token(Sym.PLUS);}
 "-" {return new Token(Sym.MINUS);}
@@ -50,5 +52,6 @@ ident = [a-z][a-zA-Z_]*
 ")" {return new Token(Sym.RPAR);}
 "," {return new Token(Sym.COMMA);}
 ";" {return new Token(Sym.SEMIC);}
+"=" {return new Token(Sym.EQUALS);}
 {blank} {}
 [^] {throw new LexerException(yyline, yycolumn,yytext());}

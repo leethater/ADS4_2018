@@ -1,5 +1,6 @@
 import java.util.List;
 import java.awt.*;
+import java.util.HashMap;
 public class LineInstruction extends Instruction{
   protected Token method;
   protected List<Expression> expressions;
@@ -11,10 +12,9 @@ public class LineInstruction extends Instruction{
     color=c;
   }
 
-  public void execute(Graphics2D g,HashMap<String,Integer> dec) throws DeclarationException{
+  public void execute(Graphics2D g) throws DeclarationException{
     int[] rgb=color.rgb();
     g.setColor(new Color(rgb[0],rgb[1],rgb[2]));
-    checkNset(dec);
     switch(method.getSym()){
       case DRAWR:
       g.drawRect(expressions.get(0).value(),expressions.get(1).value(),expressions.get(2).value(),expressions.get(3).value());
@@ -34,17 +34,6 @@ public class LineInstruction extends Instruction{
     }
   }
 
-  public void checkNset(HashMap<String,Integer> dec) throws DeclarationException{
-    for(Expression e:expressions){
-      if(e instanceof Identifier && e.value()==Integer.MIN_VALUE){
-        Identifier i=(Identifier)e;
-        if(dec.containsKey(i.getName())){
-          i.setValue(dec.get(i.getName()));
-        }
-        else throw new DeclarationException("Constant "+i.getName()+" has not been declared");
-      }
-    }
-  }
 
   public String toString(){
     String s= method.toString()+" ";

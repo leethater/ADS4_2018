@@ -2,16 +2,14 @@ import java.util.List;
 import java.awt.*;
 public class AST{
   protected List<Instruction> list;
-//  protected HashMap<String,Integer> declarations;
 
   public AST(List<Instruction> list){
     this.list=list;
     //declarations=dec;
   }
 
-  public void exec(Graphics2D g) throws DeclarationException{
-    HashMap<String,Integer> declarations=new HashMap<String,Integer>();
-    for(Instruction i:list) i.execute(g,declarations);
+  public void exec(Graphics2D g){
+    for(Instruction i:list) i.execute(g);
   }
 
   public String toString(){

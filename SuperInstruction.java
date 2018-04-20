@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.HashMap;
 import java.awt.*;
 public class SuperInstruction extends Instruction{
   protected Token begin,end;
@@ -10,14 +11,8 @@ public class SuperInstruction extends Instruction{
     instructions=l;
   }
 
-  public void execute(Graphics2D g,HashMap<String,Integer> dec) throws DeclarationException{
-    for(Instruction i:instructions) i.execute(g);
-    for(Instruction i:instructions){
-      if(i instanceof Declaration){
-        Declaration d=(Declaration)i;
-        dec.remove(d.getName());
-      }
-    }
+  public void execute(Graphics2D g) throws DeclarationException{
+    for(Instruction i:instructions) i.execute(g,dec);
   }
 
   public String toString(){

@@ -35,6 +35,14 @@ class WordToken extends Token{
     super(sym);
     this.content=content;
   }
+
+  public String getContent(){
+    return content;
+  }
+
+  public String toString(){
+    return super.toString() + " " + content;
+  }
 }
 
  class ColorToken extends Token{

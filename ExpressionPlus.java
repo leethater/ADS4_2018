@@ -1,3 +1,4 @@
+import java.util.HashMap;
 public class ExpressionPlus extends Expression{
   protected Expression expr1,expr2;
   protected Token operator;

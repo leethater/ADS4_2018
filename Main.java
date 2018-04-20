@@ -47,7 +47,7 @@ if (g instanceof Graphics2D)
   Parser parser = new Parser(look);
       AST ast=parser.progNotTerm();
       ast.exec(g2d);
-      System.out.println(ast);
+      //System.out.println(ast);
       System.out.println("The file is correct");
     }
     catch (Exception e){
