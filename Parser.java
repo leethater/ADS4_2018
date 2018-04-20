@@ -10,26 +10,22 @@ class Parser{
 
 public AST progNotTerm() throws Exception{
   HashMap<String,Integer> declarations=new HashMap<String,Integer>();
-  List<Instruction> list=instructionsList(new ArrayList<Instruction>(),declarations,null);
+  List<Instruction> list=instructionsList(new ArrayList<Instruction>(),declarations);
   if(!reader.isEmpty()) throw new ParserException(reader.getLexer().getPosition()+"  Not valid end of file");
   return new AST(list);
 }
 
-public Instruction instruction(HashMap<String,Integer> global,HashMap<String,Integer> loc) throws Exception{
+public Instruction instruction(HashMap<String,Integer> global) throws Exception{
   Instruction i;
   if(reader.check(Sym.BEGIN)){
-  //  HashMap<String,Integer> local=new HashMap<String,Integer>();
-    if(loc==null) loc=new HashMap<String,Integer>();
-    loc.putAll(global);
+    HashMap<String,Integer> local=new HashMap<String,Integer>();
+    local.putAll(global);
     Token b=reader.getCurrent();
     reader.eat(Sym.BEGIN);
-    List<Instruction> l=instructionsList(new ArrayList<Instruction>(),global,loc);
+    List<Instruction> l=instructionsList(new ArrayList<Instruction>(),local);
     Token b2=reader.getCurrent();
     reader.eat(Sym.END);
     i=new SuperInstruction(b,b2,l);
-    for(Instruction a:l){
-      if(a instanceof Declaration) loc.remove(((Declaration)a).getName());
-    }
   }
   else{
     boolean b=false;
@@ -39,18 +35,17 @@ public Instruction instruction(HashMap<String,Integer> global,HashMap<String,Int
       String s=((WordToken)reader.getCurrent()).getContent();
       reader.eat(Sym.IDENT);
       reader.eat(Sym.EQUALS);
-      Expression e=expr(global,loc);
+      Expression e=expr(global);
       i=new Declaration(b1,s,e);
-      if(loc!=null) loc.put(s,e.value());
-      else global.put(s,e.value());
-    }
+      global.put(s,e.value());
+  }
     else if(reader.check(Sym.IF)){
       reader.eat(Sym.IF);
-      Expression e=expr(global,loc);
+      Expression e=expr(global);
       reader.eat(Sym.THEN);
-      Instruction i1=instruction(global,loc);
+      Instruction i1=instruction(global);
       reader.eat(Sym.ELSE);
-      Instruction i2=instruction(global,loc);
+      Instruction i2=instruction(global);
       i=(e.value()!=0)?i1:i2;
     }
     else{
@@ -66,14 +61,14 @@ public Instruction instruction(HashMap<String,Integer> global,HashMap<String,Int
         b=true;
       }
       reader.eat(Sym.LPAR);
-      l.add(expr(global,loc));
+      l.add(expr(global));
       reader.eat(Sym.COMMA);
-      l.add(expr(global,loc));
+      l.add(expr(global));
       reader.eat(Sym.COMMA);
-      l.add(expr(global,loc));
+      l.add(expr(global));
       reader.eat(Sym.COMMA);
       if(b){
-        l.add(expr(global,loc));
+        l.add(expr(global));
         reader.eat(Sym.COMMA);
       }
       Token b2=reader.getCurrent();
@@ -87,17 +82,17 @@ public Instruction instruction(HashMap<String,Integer> global,HashMap<String,Int
 }
 
 
-public List<Instruction> instructionsList(List<Instruction> l,HashMap<String,Integer> global,HashMap<String,Integer> loc) throws Exception{
-  Instruction i=this.instruction(global,loc);
+public List<Instruction> instructionsList(List<Instruction> l,HashMap<String,Integer> global) throws Exception{
+  Instruction i=this.instruction(global);
   l.add(i);
   reader.eat(Sym.SEMIC);
   if(!reader.isEmpty() && !reader.check(Sym.END)){
-    instructionsList(l,global,loc);
+    instructionsList(l,global);
   }
   return l;
 }
 
-public Expression expr(HashMap<String,Integer> global,HashMap<String,Integer> loc) throws Exception{
+public Expression expr(HashMap<String,Integer> global) throws Exception{
   Expression e;
   if(reader.check(Sym.NUM)){
     Token t=reader.getCurrent();
@@ -109,19 +104,11 @@ public Expression expr(HashMap<String,Integer> global,HashMap<String,Integer> lo
     String key=((WordToken)reader.getCurrent()).getContent();
     reader.eat(Sym.IDENT);
     e=new Identifier(key);
-    if(loc!=null){
-      try{
-        ((Identifier)e).checkNset(reader.getLexer().getPosition(),loc);
-      }
-      catch(DeclarationException exc){
-        ((Identifier)e).checkNset(reader.getLexer().getPosition(),global);
-      }
-    }
-    else ((Identifier)e).checkNset(reader.getLexer().getPosition(),global);
+    ((Identifier)e).checkNset(reader.getLexer().getPosition(),global);
   }
   else{
     reader.eat(Sym.LPAR);
-    Expression e1=expr(global,loc);
+    Expression e1=expr(global);
     Token o=reader.getCurrent();
     switch(o.getSym()){
       case PLUS: reader.eat(Sym.PLUS);
@@ -134,7 +121,7 @@ public Expression expr(HashMap<String,Integer> global,HashMap<String,Integer> lo
         break;
       default: throw new ParserException(reader.getLexer().getPosition()+"  Not valid operator encountered !");
     }
-    Expression e2=expr(global,loc);
+    Expression e2=expr(global);
     reader.eat(Sym.RPAR);
     e=new ExpressionPlus(e1,e2,o);
 }
