@@ -10,8 +10,14 @@ public class SuperInstruction extends Instruction{
     instructions=l;
   }
 
-  public void execute(Graphics2D g){
+  public void execute(Graphics2D g,HashMap<String,Integer> dec) throws DeclarationException{
     for(Instruction i:instructions) i.execute(g);
+    for(Instruction i:instructions){
+      if(i instanceof Declaration){
+        Declaration d=(Declaration)i;
+        dec.remove(d.getName());
+      }
+    }
   }
 
   public String toString(){

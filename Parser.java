@@ -22,6 +22,7 @@ class Parser{
 
 
 public AST progNotTerm() throws Exception{
+  //HashMap<String,Integer> declarations=new HashMap<String,Integer>();
   List<Instruction> list=instructionsList(new ArrayList<Instruction>());
   if(!reader.isEmpty()) throw new ParserException(reader.getLexer().getPosition()+"  Not valid end of file");
   return new AST(list);
@@ -40,33 +41,43 @@ public Instruction instruction() throws Exception{
   else{
     boolean b=false;
     Token b1=reader.getCurrent();
-    List<Expression> l=new ArrayList<Expression>();
-    if(reader.check(Sym.DRAWC)) reader.eat(Sym.DRAWC);
-    else if(reader.check(Sym.FILLC)) reader.eat(Sym.FILLC);
-    else if(reader.check(Sym.DRAWR)){
-      reader.eat(Sym.DRAWR);
-      b=true;
+    if(reader.check(Sym.CONST)){
+      reader.eat(Sym.CONST);
+      String s=((WordToken)reader.getCurrent()).getContent();
+      reader.eat(Sym.IDENT);
+      reader.eat(Sym.EQUALS);
+      Expression e=expression();
+      i=new Declaration(b1,s,e);
     }
-    else if(reader.check(Sym.FILLR)){
-      reader.eat(Sym.FILLR);
-      b=true;
-    }
-    reader.eat(Sym.LPAR);
-    l.add(expr());
-    reader.eat(Sym.COMMA);
-    l.add(expr());
-    reader.eat(Sym.COMMA);
-    l.add(expr());
-    reader.eat(Sym.COMMA);
-    if(b){
+    else{
+      List<Expression> l=new ArrayList<Expression>();
+      if(reader.check(Sym.DRAWC)) reader.eat(Sym.DRAWC);
+      else if(reader.check(Sym.FILLC)) reader.eat(Sym.FILLC);
+      else if(reader.check(Sym.DRAWR)){
+        reader.eat(Sym.DRAWR);
+        b=true;
+      }
+      else if(reader.check(Sym.FILLR)){
+        reader.eat(Sym.FILLR);
+        b=true;
+      }
+      reader.eat(Sym.LPAR);
       l.add(expr());
       reader.eat(Sym.COMMA);
+      l.add(expr());
+      reader.eat(Sym.COMMA);
+      l.add(expr());
+      reader.eat(Sym.COMMA);
+      if(b){
+        l.add(expr());
+        reader.eat(Sym.COMMA);
+      }
+      Token b2=reader.getCurrent();
+      reader.eat(Sym.COL);
+      ColorToken b3=(ColorToken)b2;
+      reader.eat(Sym.RPAR);
+      i=new LineInstruction(b1,l,b3);
     }
-    Token b2=reader.getCurrent();
-    reader.eat(Sym.COL);
-    ColorToken b3=(ColorToken)b2;
-    reader.eat(Sym.RPAR);
-    i=new LineInstruction(b1,l,b3);
   }
   return i;
 }
@@ -89,6 +100,11 @@ public Expression expr() throws Exception{
     reader.eat(Sym.NUM);
     NumberToken n=(NumberToken)t;
     e=new IntExpression(n);
+  }
+  else if(reader.check(Sym.IDENT)){
+    String key=((WordToken)reader.getCurrent()).getContent();
+    reader.eat(Sym.IDENT);
+    e=new Identifier(key);
   }
   else{
     reader.eat(Sym.LPAR);
