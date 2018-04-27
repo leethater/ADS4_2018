@@ -12,6 +12,7 @@ public class Assignment extends Instruction{
     if((i=ident.check(map))!=null){
       i.setExpression(new IntExpression(ident.getExpression().value(map)));
       ident.setType(i.getType());
+      System.out.println(ident.getName()+ "= "+ ident+ "   " +i+(ident==i));
       if(ident.getType()!=Sym.VAR) throw new AssignmentException(ident.getName()+" is not a variable");
     }
   }

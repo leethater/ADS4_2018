@@ -9,4 +9,12 @@ public class IntExpression extends Expression{
   public int value(List<Identifier> list){
     return value;
   }
+
+  public IntExpression copy(){
+    return new IntExpression(value);
+  }
+
+  public String toString(){
+    return "" + value;
+  }
 }

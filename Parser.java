@@ -53,14 +53,31 @@ public Instruction instruction() throws Exception{
     Expression e2=expr();
     i=new Assignment(b1.getSym(),s,e2);
     }
+    else if(reader.check(Sym.WHILE)){
+      reader.eat(Sym.WHILE);
+      Expression e = expr();
+      reader.eat(Sym.DO);
+      Instruction i2 = instruction();
+      i = new WhileInstruction(e, i2);
+    }
   else if(reader.check(Sym.IF)){
       reader.eat(Sym.IF);
       Expression e=expr();
       reader.eat(Sym.THEN);
       Instruction i1=instruction();
-      reader.eat(Sym.ELSE);
-      Instruction i2=instruction();
+      Instruction i2;
+      if(reader.check(Sym.ELSE)){
+        reader.eat(Sym.ELSE);
+        i2=instruction();
+      }
+      else{
+        reader.eat(Sym.FI);
+        i2=null;
+      }
       i=new Conditional(e,i1,i2);
+
+
+
     //  i=(e.value()!=0)?i1:i2;
   }
     else{
@@ -132,6 +149,12 @@ public Expression expr() throws Exception{
       case MULT:reader.eat(Sym.MULT);
         break;
       case DIV: reader.eat(Sym.DIV);
+        break;
+      case LESS: reader.eat(Sym.LESS);
+        break;
+      case MORE: reader.eat(Sym.MORE);
+        break;
+      case EQUALS: reader.eat(Sym.EQUALS);
         break;
       default: throw new ParserException(reader.getLexer().getPosition()+"  Not valid operator encountered !");
     }

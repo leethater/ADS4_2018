@@ -40,6 +40,9 @@ ident = [a-z][a-zA-Z_]*
 "FillRect" {return new Token(Sym.FILLR);}
 "Const" {return new Token(Sym.CONST);}
 "Var" {return new Token(Sym.VAR);}
+"While" {return new Token(Sym.WHILE);}
+"Do" {return new Token(Sym.DO);}
+"Fi" {return new Token(Sym.FI);}
 
 {color} {return new ColorToken(yytext());}
 {number} {return new NumberToken(Integer.parseInt(yytext()));}
@@ -54,5 +57,7 @@ ident = [a-z][a-zA-Z_]*
 "," {return new Token(Sym.COMMA);}
 ";" {return new Token(Sym.SEMIC);}
 "=" {return new Token(Sym.EQUALS);}
+"<" {return new Token(Sym.LESS);}
+">" {return new Token(Sym.MORE);}
 {blank} {}
 [^] {throw new LexerException(yyline, yycolumn,yytext());}

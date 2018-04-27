@@ -11,12 +11,16 @@ public class ExpressionPlus extends Expression{
 
   public int value(List<Identifier> m) throws DeclarationException{
     int a=expr1.value(m),b=expr2.value(m);
+    System.out.println(this + " " + expr1 + " " +operator.getSym()+ " "+ expr2);
     Sym sym=operator.getSym();
     switch(sym){
       case PLUS: return a+b;
       case MINUS: return a-b;
       case MULT: return a*b;
       case DIV: return a/b;
+      case LESS: return Math.max(b-a,0);
+      case MORE: return Math.min(b-a,0);
+      case EQUALS: return (b==a)?1:0;
     }
     return Integer.MIN_VALUE;
   }

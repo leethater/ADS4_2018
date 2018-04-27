@@ -8,4 +8,8 @@ public abstract class Expression{
 
   }
 
+  public String toString(){
+    return "";
+  }
+
 }

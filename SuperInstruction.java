@@ -11,12 +11,10 @@ public class SuperInstruction extends Instruction{
   }
 
   public void execute(Graphics2D g, List<Identifier> map) throws Exception{
+    System.out.println("au debut "+map.get(0).value(map));
     ArrayList<Identifier> local=new ArrayList<>();
     local.addAll(map);
     for(Instruction i:instructions) i.execute(g,local);
-    for(Identifier i:map){
-      System.out.println(i.getName()+"="+i.getExpression().value(map));
-    }
   }
 
   public String toString(){

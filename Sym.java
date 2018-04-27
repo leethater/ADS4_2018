@@ -5,6 +5,7 @@ public enum Sym{
   IF,
   THEN,
   ELSE,
+  FI,
   DRAWC,
   DRAWR,
   FILLC,
@@ -20,6 +21,10 @@ public enum Sym{
   IDENT,
   CONST,
   VAR,
+  LESS,
+  MORE,
+  WHILE,
+  DO,
   LPAR,
   RPAR;
 }
