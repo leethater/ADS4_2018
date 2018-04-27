@@ -58,7 +58,7 @@ public Instruction instruction() throws Exception{
       Expression e = expr();
       reader.eat(Sym.DO);
       Instruction i2 = instruction();
-      i = new WhileInstruction(e, i2);
+      i = new WhileInstruction(e,i2);
     }
   else if(reader.check(Sym.IF)){
       reader.eat(Sym.IF);

@@ -4,7 +4,6 @@ Begin
   Var pos_y = 100;
   pos_y = ((pos_x * 2) - pos_y);
   FillRect(190, 290, 220, 120, #FF0000);
-  pos_y = 2;
   FillRect(pos_x, pos_y, 200, 100, #0000FF);
   pos_x = (pos_x / 4);
 End;
