@@ -1,6 +1,6 @@
-import java.util.List;
-import java.awt.*;
-import java.util.HashMap;
+import java.awt.Graphics2D;
+import java.awt.Color;
+import java.util.*;
 public class LineInstruction extends Instruction{
   protected Token method;
   protected List<Expression> expressions;
@@ -12,7 +12,7 @@ public class LineInstruction extends Instruction{
     color=c;
   }
 
-  public void execute(Graphics2D g, HashMap<String,Integer> map) throws DeclarationException{
+  public void execute(Graphics2D g, List<Identifier> map) throws DeclarationException{
     int[] rgb=color.rgb();
     g.setColor(new Color(rgb[0],rgb[1],rgb[2]));
     //checkNset(map);

@@ -34,26 +34,26 @@ public Instruction instruction() throws Exception{
       reader.eat(Sym.EQUALS);
       Expression e=expr();
       //useless
-      i=new Declaration(b1,s,e);
+      i=new Declaration(Sym.CONST,s,e);
   }
-  /*else if(reader.check(Sym.VAR)){
+  else if(reader.check(Sym.VAR)){
     reader.eat(Sym.VAR);
     String s=((WordToken)reader.getCurrent()).getContent();
     reader.eat(Sym.IDENT);
     reader.eat(Sym.EQUALS);
     Expression e=expr();
     //useless
-    i=new Declaration(b1,s,e);
+    i=new Declaration(Sym.VAR,s,e);
   }
   else if(reader.check(Sym.IDENT)){
-    Identifier e=(Identifier)expr();
     //if(!global.get(e.getName()).equals("Var")) throw new AffectationException(reader.getCurrent().getPosition()+". You can not modify the value of "+e.getName());
+    String s=((WordToken)reader.getCurrent()).getContent();
+    reader.eat(Sym.IDENT);
     reader.eat(Sym.EQUALS);
     Expression e2=expr();
-    //affectation
-    //on peut rajouter dans la liste des instructions une affectation et on la fera au moment de l'execution
-  }*/
-    else if(reader.check(Sym.IF)){
+    i=new Assignment(b1.getSym(),s,e2);
+    }
+  else if(reader.check(Sym.IF)){
       reader.eat(Sym.IF);
       Expression e=expr();
       reader.eat(Sym.THEN);
@@ -62,7 +62,7 @@ public Instruction instruction() throws Exception{
       Instruction i2=instruction();
       i=new Conditional(e,i1,i2);
     //  i=(e.value()!=0)?i1:i2;
-    }
+  }
     else{
       List<Expression> l=new ArrayList<Expression>();
       if(reader.check(Sym.DRAWC)) reader.eat(Sym.DRAWC);
@@ -113,7 +113,7 @@ public Expression expr() throws Exception{
     Token t=reader.getCurrent();
     reader.eat(Sym.NUM);
     NumberToken n=(NumberToken)t;
-    e=new IntExpression(n);
+    e=new IntExpression(n.getValue());
   }
   else if(reader.check(Sym.IDENT)){
     String key=((WordToken)reader.getCurrent()).getContent();

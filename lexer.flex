@@ -39,6 +39,7 @@ ident = [a-z][a-zA-Z_]*
 "DrawRect" {return new Token(Sym.DRAWR);}
 "FillRect" {return new Token(Sym.FILLR);}
 "Const" {return new Token(Sym.CONST);}
+"Var" {return new Token(Sym.VAR);}
 
 {color} {return new ColorToken(yytext());}
 {number} {return new NumberToken(Integer.parseInt(yytext()));}

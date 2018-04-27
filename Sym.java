@@ -19,6 +19,7 @@ public enum Sym{
   EQUALS,
   IDENT,
   CONST,
+  VAR,
   LPAR,
   RPAR;
 }

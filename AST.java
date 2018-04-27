@@ -1,6 +1,5 @@
-import java.util.List;
-import java.awt.*;
-import java.util.HashMap;
+import java.awt.Graphics2D;
+import java.util.*;
 public class AST{
   protected List<Instruction> list;
 
@@ -8,8 +7,8 @@ public class AST{
     this.list=list;
   }
 
-  public void exec(Graphics2D g) throws DeclarationException{
-    HashMap<String,Integer> m=new HashMap<String,Integer>();
+  public void exec(Graphics2D g) throws Exception{
+    List<Identifier> m=new ArrayList<>();
     for(Instruction i:list) i.execute(g,m);
   }
 

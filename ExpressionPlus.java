@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.*;
 public class ExpressionPlus extends Expression{
   protected Expression expr1,expr2;
   protected Token operator;
@@ -9,7 +9,7 @@ public class ExpressionPlus extends Expression{
     operator=t;
   }
 
-  public int value(HashMap<String,Integer> m) throws DeclarationException{
+  public int value(List<Identifier> m) throws DeclarationException{
     int a=expr1.value(m),b=expr2.value(m);
     Sym sym=operator.getSym();
     switch(sym){
@@ -21,7 +21,7 @@ public class ExpressionPlus extends Expression{
     return Integer.MIN_VALUE;
   }
 
-  public void checkNset(HashMap<String,Integer> map) throws DeclarationException{
+  public void checkNset(List<Identifier> map) throws DeclarationException{
     expr1.checkNset(map);
     expr2.checkNset(map);
   }

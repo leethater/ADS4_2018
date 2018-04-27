@@ -1,5 +1,5 @@
-import java.util.HashMap;
-import java.awt.*;
+import java.util.*;
+import java.awt.Graphics2D;
 public class Conditional extends Instruction{
   protected Expression expression;
   protected Instruction i1,i2,eval;
@@ -10,7 +10,7 @@ public class Conditional extends Instruction{
     this.i2=i2;
   }
 
-  public void execute(Graphics2D g, HashMap<String,Integer> map) throws DeclarationException{
+  public void execute(Graphics2D g, List<Identifier> map) throws Exception{
     eval=(expression.value(map)!=0)?i1:i2;
     eval.execute(g,map);
   }

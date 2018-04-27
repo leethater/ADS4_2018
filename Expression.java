@@ -1,10 +1,10 @@
-import java.util.HashMap;
+import java.util.List;
 public abstract class Expression{
 
 
-  public abstract int value(HashMap<String,Integer> m) throws DeclarationException;
+  public abstract int value(List<Identifier> m) throws DeclarationException;
 
-  public void checkNset(HashMap<String,Integer> map) throws DeclarationException{
+  public void checkNset(List<Identifier> map) throws DeclarationException{
 
   }
 

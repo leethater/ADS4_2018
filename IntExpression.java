@@ -1,12 +1,12 @@
-import java.util.HashMap;
+import java.util.*;
 public class IntExpression extends Expression{
-  protected NumberToken token;
+  protected int value;
 
-  public IntExpression(NumberToken token){
-    this.token=token;
+  public IntExpression(int v){
+    this.value=v;
   }
 
-  public int value(HashMap<String,Integer> m){
-    return token.getValue();
+  public int value(List<Identifier> list){
+    return value;
   }
 }

@@ -1,50 +1,70 @@
-import java.util.HashMap;
+import java.util.*;
 public class Identifier extends Expression{
+  protected Sym type;
   protected String name;
-  protected int value;
+  protected Expression e;
 
   public Identifier(String name){
     this.name=name;
-    value=Integer.MIN_VALUE;
+    type=null;
+    e=null;
   }
 
-  public Identifier(String name,int val){
+  public Identifier(String name,Expression e,Sym type){
     this.name=name;
-    value=val;
+    this.e=e;
+    this.type=type;
   }
 
-  public int value(HashMap<String,Integer> m) throws DeclarationException{
+  public int value(List<Identifier> m) throws DeclarationException{
     checkNset(m);
-    return value;
+    return e.value(m);
   //  return checkValue(m);
+  }
+
+  public Expression getExpression(){
+    return e;
+  }
+
+  public void setExpression(Expression e){
+    this.e=e;
+  }
+
+  public Sym getType(){
+    return type;
+  }
+
+  public void setType(Sym type){
+    this.type=type;
   }
 
   public String getName(){
     return name;
   }
 
-  public void setValue(int v){
-    value=v;
+
+  public Identifier check(List<Identifier> list) throws DeclarationException{
+    for(Identifier i:list) {
+      if(i.getName().equals(this.name)) return i;
+    }
+  throw new DeclarationException(this.getName()+" has not been declared");
   }
 
-  /*public void checkValue(HashMap<String,Integer> dec) throws DeclarationException{
-    if(dec.containsKey(this.getName())) return dec.get(this.getName());
-    else throw new DeclarationException("Constant "+this.getName()+" has not been declared");
-  }*/
-
-
-  public void checkNset(HashMap<String,Integer> dec) throws DeclarationException{
-    if(value==Integer.MIN_VALUE){
-        if(dec.containsKey(this.getName())){
-          this.setValue(dec.get(this.getName()));
-        //  System.out.println(this.getName()+"= "+this.value());
-        }
-        else throw new DeclarationException("Constant "+this.getName()+" has not been declared");
-      }
+  public Identifier checkYOLO(List<Identifier> list){
+    for(Identifier i:list) {
+      if(i.getName().equals(this.name)) return i;
     }
+    return null;
+  }
 
-    public boolean equals(Identifier i){
-      return this.name.equals(i.getName());
+
+
+  public void checkNset(List<Identifier> list) throws DeclarationException{
+    Identifier i=check(list);
+    if(e==null && i!=null){
+      this.e=new IntExpression(i.getExpression().value(list));
+      this.type=i.getType();
     }
+  }
 
 }

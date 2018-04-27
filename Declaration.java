@@ -1,18 +1,14 @@
-import java.awt.*;
-import java.util.HashMap;
+import java.awt.Graphics2D;
+import java.util.*;
 public class Declaration extends Instruction{
-  protected Token t;
-  protected String name;
-  protected Expression expression;
+  protected Identifier i;
 
-  public Declaration(Token t,String name,Expression e){
-    this.t=t;
-    this.name=name;
-    expression=e;
+  public Declaration(Sym s,String name,Expression e){
+    i=new Identifier(name,e,s);
   }
 
   public String getName(){
-    return name;
+    return i.getName();
   }
 
   /*public String toString(){
@@ -20,7 +16,11 @@ public class Declaration extends Instruction{
   }*/
 
 
-  public void execute(Graphics2D g, HashMap<String,Integer> map) throws DeclarationException{
-    map.put(name,expression.value(map));
+  public void execute(Graphics2D g, List<Identifier> map) throws DeclarationException{
+    Identifier ident;
+      i=new Identifier(i.getName(),new IntExpression(i.getExpression().value(map)),i.getType());
+      ident=i.checkYOLO(map);
+      if(ident!=null) map.remove(ident);
+      map.add(i);
   }
 }

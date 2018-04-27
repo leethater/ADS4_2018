@@ -1,6 +1,5 @@
-import java.util.List;
-import java.util.HashMap;
-import java.awt.*;
+import java.awt.Graphics2D;
+import java.util.*;
 public class SuperInstruction extends Instruction{
   protected Token begin,end;
   protected List<Instruction> instructions;
@@ -11,10 +10,13 @@ public class SuperInstruction extends Instruction{
     instructions=l;
   }
 
-  public void execute(Graphics2D g, HashMap<String,Integer> map) throws DeclarationException{
-    HashMap<String,Integer> local=new HashMap<String,Integer>();
-    local.putAll(map);
+  public void execute(Graphics2D g, List<Identifier> map) throws Exception{
+    ArrayList<Identifier> local=new ArrayList<>();
+    local.addAll(map);
     for(Instruction i:instructions) i.execute(g,local);
+    for(Identifier i:map){
+      System.out.println(i.getName()+"="+i.getExpression().value(map));
+    }
   }
 
   public String toString(){
