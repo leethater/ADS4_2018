@@ -12,33 +12,38 @@ public class LineInstruction extends Instruction{
     color=c;
   }
 
-  public void execute(Graphics2D g){
+  public void execute(Graphics2D g, HashMap<String,Integer> map) throws DeclarationException{
     int[] rgb=color.rgb();
     g.setColor(new Color(rgb[0],rgb[1],rgb[2]));
+    //checkNset(map);
     switch(method.getSym()){
       case DRAWR:
-      g.drawRect(expressions.get(0).value(),expressions.get(1).value(),expressions.get(2).value(),expressions.get(3).value());
+      g.drawRect(expressions.get(0).value(map),expressions.get(1).value(map),expressions.get(2).value(map),expressions.get(3).value(map));
       break;
 
       case DRAWC:
-      g.drawOval(expressions.get(0).value()-expressions.get(2).value(),expressions.get(1).value()-expressions.get(2).value(),expressions.get(2).value()*2,expressions.get(2).value()*2);
+      g.drawOval(expressions.get(0).value(map)-expressions.get(2).value(map),expressions.get(1).value(map)-expressions.get(2).value(map),expressions.get(2).value(map)*2,expressions.get(2).value(map)*2);
       break;
 
       case FILLC:
-      g.fillOval(expressions.get(0).value()-expressions.get(2).value(),expressions.get(1).value()-expressions.get(2).value(),expressions.get(2).value()*2,expressions.get(2).value()*2);
+      g.fillOval(expressions.get(0).value(map)-expressions.get(2).value(map),expressions.get(1).value(map)-expressions.get(2).value(map),expressions.get(2).value(map)*2,expressions.get(2).value(map)*2);
       break;
 
       case FILLR:
-      g.fillRect(expressions.get(0).value(),expressions.get(1).value(),expressions.get(2).value(),expressions.get(3).value());
+      g.fillRect(expressions.get(0).value(map),expressions.get(1).value(map),expressions.get(2).value(map),expressions.get(3).value(map));
       break;
     }
   }
 
 
-  public String toString(){
+/*  public String toString(){
     String s= method.toString()+" ";
-    for(Expression e:expressions) s+=e.value()+" ";
+    for(Expression e:expressions) s+=e.value(map)+" ";
     s+=color.toString();
     return s;
-  }
+  }*/
+
+/*  public void checkNset(HashMap<String,Integer> map) throws DeclarationException{
+    for(Expression e:expressions) e.checkNset(map);
+  }*/
 }

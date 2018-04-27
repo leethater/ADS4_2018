@@ -11,8 +11,10 @@ public class SuperInstruction extends Instruction{
     instructions=l;
   }
 
-  public void execute(Graphics2D g){
-    for(Instruction i:instructions) i.execute(g);
+  public void execute(Graphics2D g, HashMap<String,Integer> map) throws DeclarationException{
+    HashMap<String,Integer> local=new HashMap<String,Integer>();
+    local.putAll(map);
+    for(Instruction i:instructions) i.execute(g,local);
   }
 
   public String toString(){

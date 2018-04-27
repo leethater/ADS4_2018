@@ -1,18 +1,26 @@
 import java.awt.*;
+import java.util.HashMap;
 public class Declaration extends Instruction{
   protected Token t;
-  protected Identifier id;
+  protected String name;
+  protected Expression expression;
 
   public Declaration(Token t,String name,Expression e){
     this.t=t;
-    id=new Identifier(name,e.value());
+    this.name=name;
+    expression=e;
   }
 
   public String getName(){
-    return id.getName();
+    return name;
   }
 
-  public String toString(){
+  /*public String toString(){
     return id.getName()+"=   "+id.value();
+  }*/
+
+
+  public void execute(Graphics2D g, HashMap<String,Integer> map) throws DeclarationException{
+    map.put(name,expression.value(map));
   }
 }

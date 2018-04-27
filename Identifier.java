@@ -13,8 +13,10 @@ public class Identifier extends Expression{
     value=val;
   }
 
-  public int value(){
+  public int value(HashMap<String,Integer> m) throws DeclarationException{
+    checkNset(m);
     return value;
+  //  return checkValue(m);
   }
 
   public String getName(){
@@ -25,14 +27,24 @@ public class Identifier extends Expression{
     value=v;
   }
 
-  public void checkNset(String s,HashMap<String,Integer> dec) throws DeclarationException{
+  /*public void checkValue(HashMap<String,Integer> dec) throws DeclarationException{
+    if(dec.containsKey(this.getName())) return dec.get(this.getName());
+    else throw new DeclarationException("Constant "+this.getName()+" has not been declared");
+  }*/
+
+
+  public void checkNset(HashMap<String,Integer> dec) throws DeclarationException{
     if(value==Integer.MIN_VALUE){
         if(dec.containsKey(this.getName())){
           this.setValue(dec.get(this.getName()));
-          System.out.println(this.getName()+"= "+this.value());
+        //  System.out.println(this.getName()+"= "+this.value());
         }
-        else throw new DeclarationException(s+". "+"Constant "+this.getName()+" has not been declared");
+        else throw new DeclarationException("Constant "+this.getName()+" has not been declared");
       }
+    }
+
+    public boolean equals(Identifier i){
+      return this.name.equals(i.getName());
     }
 
 }

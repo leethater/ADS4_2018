@@ -52,7 +52,7 @@ if (g instanceof Graphics2D)
     }
     catch (Exception e){
       System.out.println("The file is not correct");
-      e.printStackTrace();
+      System.out.println(e);
     }
 
   // A compléter.

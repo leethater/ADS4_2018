@@ -9,8 +9,8 @@ public class ExpressionPlus extends Expression{
     operator=t;
   }
 
-  public int value(){
-    int a=expr1.value(),b=expr2.value();
+  public int value(HashMap<String,Integer> m) throws DeclarationException{
+    int a=expr1.value(m),b=expr2.value(m);
     Sym sym=operator.getSym();
     switch(sym){
       case PLUS: return a+b;
@@ -19,6 +19,11 @@ public class ExpressionPlus extends Expression{
       case DIV: return a/b;
     }
     return Integer.MIN_VALUE;
+  }
+
+  public void checkNset(HashMap<String,Integer> map) throws DeclarationException{
+    expr1.checkNset(map);
+    expr2.checkNset(map);
   }
 
 }
