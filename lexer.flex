@@ -43,6 +43,7 @@ ident = [a-z][a-zA-Z_]*
 "While" {return new Token(Sym.WHILE);}
 "Do" {return new Token(Sym.DO);}
 "Fi" {return new Token(Sym.FI);}
+"For" {return new Token(Sym.FOR);}
 
 {color} {return new ColorToken(yytext());}
 {number} {return new NumberToken(Integer.parseInt(yytext()));}

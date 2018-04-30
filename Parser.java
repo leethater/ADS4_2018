@@ -80,6 +80,30 @@ public Instruction instruction() throws Exception{
 
     //  i=(e.value()!=0)?i1:i2;
   }
+  else if(reader.check(Sym.FOR)){
+    reader.eat(Sym.FOR);
+    reader.eat(Sym.LPAR);
+    reader.eat(Sym.VAR);
+    String s=((WordToken)reader.getCurrent()).getContent();
+    reader.eat(Sym.IDENT);
+    reader.eat(Sym.EQUALS);
+    Expression e=expr();
+    Declaration dec = new Declaration(Sym.VAR,s,e);
+    reader.eat(Sym.COMMA);
+    Expression cond = expr();
+    reader.eat(Sym.COMMA);
+    reader.eat(Sym.IDENT);
+    String s1=((WordToken)reader.getCurrent()).getContent();
+    reader.eat(Sym.IDENT);
+    reader.eat(Sym.EQUALS);
+    Expression e2=expr();
+    Assignment affect = new Assignment(Sym.VAR,s1,e2);
+    reader.eat(Sym.RPAR);
+    reader.eat(Sym.DO);
+    Instruction l = instruction();
+    i = new ForInstruction(dec, cond, affect, l);
+
+  }
     else{
       List<Expression> l=new ArrayList<Expression>();
       if(reader.check(Sym.DRAWC)) reader.eat(Sym.DRAWC);
