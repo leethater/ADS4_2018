@@ -1,7 +1,7 @@
 Const pos_x = 50;
 Const pos_xx = (pos_x * 4);
 Begin
-Const pos_x=12;
+  Const pos_x=12;
   Const pos_y = 100;
   Begin
     Const pos_x = 3;

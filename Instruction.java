@@ -1,11 +1,11 @@
-import java.awt.Graphics2D;
-import java.util.*;
+import java.awt.*;
+import java.util.HashMap;
 public abstract class Instruction{
 
-  public abstract void execute(Graphics2D g, List<Identifier> list) throws Exception;
+  public void execute(Graphics2D g){
+  }
 
   public String toString(){
     return "";
   }
-
 }

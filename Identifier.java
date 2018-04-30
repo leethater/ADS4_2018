@@ -61,18 +61,10 @@ public class Identifier extends Expression{
 
   public void checkNset(List<Identifier> list) throws DeclarationException{
     Identifier i=check(list);
-    if(e==null && i!=null){
+    if(i!=null){
       this.e=i.getExpression();
       this.type=i.getType();
     }
-  }
-
-  public Identifier copy(){
-    return new Identifier(name,e, type);
-  }
-
-  public String toString(){
-    return this.name + "=";
   }
 
 }

@@ -31,12 +31,12 @@ public class Lexer {
    */
   private static final String ZZ_CMAP_PACKED = 
     "\11\0\1\1\1\1\2\0\1\1\22\0\1\1\2\0\1\4\4\0"+
-    "\1\44\1\45\1\10\1\5\1\46\1\6\1\0\1\7\12\2\1\0"+
-    "\1\47\1\51\1\50\1\52\2\0\1\3\1\13\1\34\1\30\1\20"+
-    "\1\36\2\12\1\22\10\12\1\37\1\12\1\24\1\12\1\42\1\43"+
-    "\3\12\4\0\1\12\1\0\1\32\1\11\1\35\1\21\1\14\1\23"+
-    "\1\15\1\25\1\16\2\11\1\26\1\11\1\17\1\41\2\11\1\31"+
-    "\1\27\1\40\2\11\1\33\3\11\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uff95\0";
+    "\1\42\1\43\1\10\1\5\1\44\1\6\1\0\1\7\12\2\1\0"+
+    "\1\45\1\0\1\46\3\0\1\3\1\13\1\34\1\30\1\20\1\36"+
+    "\2\12\1\22\10\12\1\37\1\12\1\24\6\12\4\0\1\12\1\0"+
+    "\1\32\1\11\1\35\1\21\1\14\1\23\1\15\1\25\1\16\2\11"+
+    "\1\26\1\11\1\17\1\41\2\11\1\31\1\27\1\40\2\11\1\33"+
+    "\3\11\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uff95\0";
 
   /** 
    * Translates characters to character classes
@@ -50,6 +50,7 @@ public class Lexer {
 
   private static final String ZZ_ACTION_PACKED_0 =
     "\1\0\1\1\1\2\1\3\1\1\1\4\1\5\1\6"+
+<<<<<<< HEAD
     "\1\7\1\10\11\1\1\11\1\12\1\13\1\14\1\15"+
     "\1\16\1\17\4\0\1\20\2\0\1\21\1\0\1\22"+
     "\5\0\1\23\5\0\1\24\1\25\3\0\1\26\1\27"+
@@ -58,6 +59,15 @@ public class Lexer {
 
   private static int [] zzUnpackAction() {
     int [] result = new int[84];
+=======
+    "\1\7\1\10\7\1\1\11\1\12\1\13\1\14\1\15"+
+    "\4\0\1\16\6\0\1\17\7\0\1\20\1\21\4\0"+
+    "\1\22\2\0\1\23\7\0\1\24\5\0\1\25\1\0"+
+    "\1\26\2\0\1\27\1\30";
+
+  private static int [] zzUnpackAction() {
+    int [] result = new int[71];
+>>>>>>> 280a3355e27dfd2ec5e67ba119ac3d3793776d8a
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -82,6 +92,7 @@ public class Lexer {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
+<<<<<<< HEAD
     "\0\0\0\53\0\53\0\126\0\201\0\53\0\53\0\53"+
     "\0\53\0\254\0\327\0\u0102\0\u012d\0\u0158\0\u0183\0\u01ae"+
     "\0\u01d9\0\u0204\0\u022f\0\53\0\53\0\53\0\53\0\53"+
@@ -96,6 +107,20 @@ public class Lexer {
 
   private static int [] zzUnpackRowMap() {
     int [] result = new int[84];
+=======
+    "\0\0\0\47\0\47\0\116\0\165\0\47\0\47\0\47"+
+    "\0\47\0\234\0\303\0\352\0\u0111\0\u0138\0\u015f\0\u0186"+
+    "\0\u01ad\0\47\0\47\0\47\0\47\0\47\0\u01d4\0\u01fb"+
+    "\0\u0222\0\u0249\0\47\0\u0270\0\u0297\0\u02be\0\u02e5\0\u030c"+
+    "\0\u0333\0\47\0\u035a\0\u0381\0\u03a8\0\u03cf\0\u03f6\0\u041d"+
+    "\0\u0444\0\47\0\47\0\u046b\0\u0492\0\u04b9\0\u04e0\0\47"+
+    "\0\u0507\0\u052e\0\47\0\u0555\0\u057c\0\u05a3\0\u05ca\0\u05f1"+
+    "\0\u0618\0\u063f\0\47\0\u0666\0\u068d\0\u06b4\0\u06db\0\u0702"+
+    "\0\47\0\u0729\0\47\0\u0750\0\u0777\0\47\0\47";
+
+  private static int [] zzUnpackRowMap() {
+    int [] result = new int[71];
+>>>>>>> 280a3355e27dfd2ec5e67ba119ac3d3793776d8a
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -121,6 +146,7 @@ public class Lexer {
     "\1\2\1\3\1\4\1\2\1\5\1\6\1\7\1\10"+
     "\1\11\1\12\1\2\1\13\4\12\1\14\1\12\1\15"+
     "\1\12\1\16\3\12\1\17\3\12\1\20\1\12\1\21"+
+<<<<<<< HEAD
     "\1\2\2\12\1\22\1\23\1\24\1\25\1\26\1\27"+
     "\1\30\1\31\1\32\55\0\1\4\52\0\2\33\7\0"+
     "\1\33\4\0\1\33\7\0\1\33\3\0\1\33\1\0"+
@@ -149,6 +175,33 @@ public class Lexer {
 
   private static int [] zzUnpackTrans() {
     int [] result = new int[2451];
+=======
+    "\1\2\2\12\1\22\1\23\1\24\1\25\1\26\51\0"+
+    "\1\4\46\0\2\27\7\0\1\27\4\0\1\27\7\0"+
+    "\1\27\3\0\1\27\1\0\1\27\13\0\1\12\5\0"+
+    "\31\12\21\0\1\30\51\0\1\31\6\0\1\32\43\0"+
+    "\1\33\50\0\1\34\52\0\1\35\56\0\1\36\23\0"+
+    "\1\37\32\0\2\40\7\0\1\40\4\0\1\40\7\0"+
+    "\1\40\3\0\1\40\1\0\1\40\25\0\1\41\52\0"+
+    "\1\42\54\0\1\43\33\0\1\44\64\0\1\45\33\0"+
+    "\1\46\55\0\1\47\22\0\2\50\7\0\1\50\4\0"+
+    "\1\50\7\0\1\50\3\0\1\50\1\0\1\50\26\0"+
+    "\1\51\44\0\1\52\51\0\1\53\62\0\1\54\42\0"+
+    "\1\55\45\0\1\56\22\0\2\57\7\0\1\57\4\0"+
+    "\1\57\7\0\1\57\3\0\1\57\1\0\1\57\27\0"+
+    "\1\60\63\0\1\61\2\0\1\62\47\0\1\63\42\0"+
+    "\1\64\2\0\1\65\11\0\2\66\7\0\1\66\4\0"+
+    "\1\66\7\0\1\66\3\0\1\66\1\0\1\66\26\0"+
+    "\1\67\44\0\1\70\50\0\1\71\44\0\1\72\34\0"+
+    "\2\73\7\0\1\73\4\0\1\73\7\0\1\73\3\0"+
+    "\1\73\1\0\1\73\41\0\1\74\52\0\1\75\42\0"+
+    "\1\76\52\0\1\77\46\0\1\100\51\0\1\101\43\0"+
+    "\1\102\51\0\1\103\34\0\1\104\46\0\1\105\34\0"+
+    "\1\106\46\0\1\107\32\0";
+
+  private static int [] zzUnpackTrans() {
+    int [] result = new int[1950];
+>>>>>>> 280a3355e27dfd2ec5e67ba119ac3d3793776d8a
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -186,6 +239,7 @@ public class Lexer {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
+<<<<<<< HEAD
     "\1\0\2\11\2\1\4\11\12\1\7\11\4\0\1\11"+
     "\2\0\1\11\1\0\1\1\5\0\1\11\5\0\2\11"+
     "\3\0\2\11\5\0\1\11\2\0\1\11\2\0\1\11"+
@@ -193,6 +247,14 @@ public class Lexer {
 
   private static int [] zzUnpackAttribute() {
     int [] result = new int[84];
+=======
+    "\1\0\2\11\2\1\4\11\10\1\5\11\4\0\1\11"+
+    "\6\0\1\11\7\0\2\11\4\0\1\11\2\0\1\11"+
+    "\7\0\1\11\5\0\1\11\1\0\1\11\2\0\2\11";
+
+  private static int [] zzUnpackAttribute() {
+    int [] result = new int[71];
+>>>>>>> 280a3355e27dfd2ec5e67ba119ac3d3793776d8a
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -299,7 +361,7 @@ public class Lexer {
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 164) {
+    while (i < 156) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);
@@ -652,6 +714,7 @@ public class Lexer {
           case 1: 
             { throw new LexerException(yyline, yycolumn,yytext());
             }
+<<<<<<< HEAD
           case 32: break;
           case 2: 
             { 
@@ -773,6 +836,101 @@ public class Lexer {
             { return new Token(Sym.FILLC);
             }
           case 62: break;
+=======
+          case 25: break;
+          case 2: 
+            { 
+            }
+          case 26: break;
+          case 3: 
+            { return new NumberToken(Integer.parseInt(yytext()));
+            }
+          case 27: break;
+          case 4: 
+            { return new Token(Sym.PLUS);
+            }
+          case 28: break;
+          case 5: 
+            { return new Token(Sym.MINUS);
+            }
+          case 29: break;
+          case 6: 
+            { return new Token(Sym.DIV);
+            }
+          case 30: break;
+          case 7: 
+            { return new Token(Sym.MULT);
+            }
+          case 31: break;
+          case 8: 
+            { return new WordToken(Sym.IDENT, yytext());
+            }
+          case 32: break;
+          case 9: 
+            { return new Token(Sym.LPAR);
+            }
+          case 33: break;
+          case 10: 
+            { return new Token(Sym.RPAR);
+            }
+          case 34: break;
+          case 11: 
+            { return new Token(Sym.COMMA);
+            }
+          case 35: break;
+          case 12: 
+            { return new Token(Sym.SEMIC);
+            }
+          case 36: break;
+          case 13: 
+            { return new Token(Sym.EQUALS);
+            }
+          case 37: break;
+          case 14: 
+            { return new Token(Sym.IF);
+            }
+          case 38: break;
+          case 15: 
+            { return new Token(Sym.END);
+            }
+          case 39: break;
+          case 16: 
+            { return new Token(Sym.ELSE);
+            }
+          case 40: break;
+          case 17: 
+            { return new Token(Sym.THEN);
+            }
+          case 41: break;
+          case 18: 
+            { return new Token(Sym.BEGIN);
+            }
+          case 42: break;
+          case 19: 
+            { return new Token(Sym.CONST);
+            }
+          case 43: break;
+          case 20: 
+            { return new ColorToken(yytext());
+            }
+          case 44: break;
+          case 21: 
+            { return new Token(Sym.DRAWR);
+            }
+          case 45: break;
+          case 22: 
+            { return new Token(Sym.FILLR);
+            }
+          case 46: break;
+          case 23: 
+            { return new Token(Sym.DRAWC);
+            }
+          case 47: break;
+          case 24: 
+            { return new Token(Sym.FILLC);
+            }
+          case 48: break;
+>>>>>>> 280a3355e27dfd2ec5e67ba119ac3d3793776d8a
           default:
             zzScanError(ZZ_NO_MATCH);
         }
