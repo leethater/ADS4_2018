@@ -87,7 +87,6 @@ public Instruction instruction() throws Exception{
     reader.eat(Sym.COMMA);
     Expression cond = expr();
     reader.eat(Sym.COMMA);
-    reader.eat(Sym.IDENT);
     String s1=((WordToken)reader.getCurrent()).getContent();
     reader.eat(Sym.IDENT);
     reader.eat(Sym.EQUALS);
