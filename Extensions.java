@@ -20,20 +20,13 @@ class WhileInstruction extends Instruction{
 }
 
 
-/*class ForInstruction extends Instruction{
+class ForInstruction extends Instruction{
   protected Declaration dec;
   protected Expression condition;
-  protected Affectation affectation;
-  //protected Conditional cond;
+  protected Assignment affectation;
   protected Instruction list;
 
-public ForInstruction(Declaration dec,Conditional cond, Instruction sup){
-    this.dec=dec;
-    this.cond=cond;
-    list=sup;
-  }
-
-  public ForInstruction(Declaration dec,Expression cond,Affectation aff, Instruction sup){
+  public ForInstruction(Declaration dec,Expression cond,Assignment aff, Instruction sup){
     this.dec=dec;
     this.condition=cond;
     affectation=aff;
@@ -41,13 +34,13 @@ public ForInstruction(Declaration dec,Conditional cond, Instruction sup){
   }
 
 
-  public void execute(Graphics2D g, HashMap<String,Integer> map) throws DeclarationException{
-    HashMap<String,Integer> m=new HashMap<>();
-    m.putAll(map);
-    dec.execute(g,m);
-    while(condition.value(m)!=0){
-      list.execute(g,m);
-      affectation.execute(g,m);
+  public void execute(Graphics2D g, List<Identifier> map) throws DeclarationException{
+    List<Identifier> loc=new List<Identifier>;
+    loc.addAll(map);
+    dec.execute(g,loc);
+    while(condition.value(loc)!=0){
+      list.execute(g,loc);
+      affectation.execute(g,loc);
     }
   }
-}*/
+}

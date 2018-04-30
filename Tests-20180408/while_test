@@ -1,7 +1,0 @@
-Var i = 12;
-While ((i+1)>2)
-  Do
-    Begin
-      FillCircle(100, 100, 50, #00FF00);
-      i=(i-1);
-    End;
