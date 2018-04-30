@@ -1,4 +1,4 @@
-For (Var i = 3, (i<1), i = (i-1))
+For (Var i = 3, (i>1), i = (i-1))
   Do
     Begin
       FillCircle(100, 100, 50, #00FF00);
