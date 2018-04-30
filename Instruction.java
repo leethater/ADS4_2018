@@ -2,9 +2,7 @@ import java.awt.Graphics2D;
 import java.util.*;
 import java.awt.Color;
  abstract class Instruction{
-
   public abstract void execute(Graphics2D g, List<Identifier> list) throws Exception;
-
 }
 
 class LineInstruction extends Instruction{
@@ -39,6 +37,7 @@ class LineInstruction extends Instruction{
      break;
    }
  }
+}
 
  class SuperInstruction extends Instruction{
    protected Token begin,end;

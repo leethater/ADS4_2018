@@ -47,29 +47,12 @@ if (g instanceof Graphics2D)
   Parser parser = new Parser(look);
       AST ast=parser.progNotTerm();
       ast.exec(g2d);
-      //System.out.println(ast);
       System.out.println("The file is correct");
     }
     catch (Exception e){
       System.out.println("The file is not correct");
-      e.printStackTrace();
+      System.out.println(e);
     }
-
-  // A compléter.
-  // Appelez ici votre analyseur et interpréteur, en leur fournissant
-  // l'objet g2d de type Graphics2D. Ils pourront ainsi appeler les fonctions
-  // g2d.drawCircle, g2d.setColor, etc...
-  //
-  // Par exemple :
-  //
-  // File input = new File(filename);
-  // Reader reader = new FileReader(input);
-  // Lexer lexer = new Lexer(reader);
-  // LookAhead1 look = new LookAhead1(lexer);
-  // Parser parser = new Parser(look);
-  // AST ast = parser.progNonTerm();
-  // ast.exec(g2d);
-
 }
 }
 }
