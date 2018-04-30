@@ -25,6 +25,7 @@ public enum Sym{
   MORE,
   WHILE,
   DO,
+  FOR,
   LPAR,
   RPAR;
 }

@@ -1,5 +1,6 @@
 import java.awt.Graphics2D;
 import java.util.List;
+import java.util.ArrayList;
 class Extensions{
 
 }
@@ -14,7 +15,6 @@ class WhileInstruction extends Instruction{
 
   public void execute(Graphics2D g, List<Identifier> map) throws Exception{
     while(expression.value(map)!=0) {
-      System.out.println("Expr"+ expression.value(map));
       instruction.execute(g,map);
   }}
 }
@@ -26,7 +26,7 @@ class ForInstruction extends Instruction{
   protected Assignment affectation;
   protected Instruction list;
 
-  public ForInstruction(Declaration dec,Expression cond,Assignment aff, Instruction sup){
+  public ForInstruction(Declaration dec,Expression cond, Assignment aff, Instruction sup){
     this.dec=dec;
     this.condition=cond;
     affectation=aff;
@@ -34,13 +34,13 @@ class ForInstruction extends Instruction{
   }
 
 
-  public void execute(Graphics2D g, List<Identifier> map) throws DeclarationException{
-    List<Identifier> loc=new List<Identifier>;
-    loc.addAll(map);
-    dec.execute(g,loc);
-    while(condition.value(loc)!=0){
-      list.execute(g,loc);
-      affectation.execute(g,loc);
+  public void execute(Graphics2D g, List<Identifier> map) throws Exception{
+    List<Identifier> m = new ArrayList<Identifier>();
+    m.addAll(map);
+    dec.execute(g,m);
+    while(condition.value(m)!=0){
+      list.execute(g,m);
+      affectation.execute(g,m);
     }
   }
 }
