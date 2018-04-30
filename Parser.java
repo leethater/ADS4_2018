@@ -46,7 +46,6 @@ public Instruction instruction() throws Exception{
     i=new Declaration(Sym.VAR,s,e);
   }
   else if(reader.check(Sym.IDENT)){
-    //if(!global.get(e.getName()).equals("Var")) throw new AffectationException(reader.getCurrent().getPosition()+". You can not modify the value of "+e.getName());
     String s=((WordToken)reader.getCurrent()).getContent();
     reader.eat(Sym.IDENT);
     reader.eat(Sym.EQUALS);
@@ -75,10 +74,6 @@ public Instruction instruction() throws Exception{
         i2=null;
       }
       i=new Conditional(e,i1,i2);
-
-
-
-    //  i=(e.value()!=0)?i1:i2;
   }
   else if(reader.check(Sym.FOR)){
     reader.eat(Sym.FOR);
@@ -92,7 +87,6 @@ public Instruction instruction() throws Exception{
     reader.eat(Sym.COMMA);
     Expression cond = expr();
     reader.eat(Sym.COMMA);
-    reader.eat(Sym.IDENT);
     String s1=((WordToken)reader.getCurrent()).getContent();
     reader.eat(Sym.IDENT);
     reader.eat(Sym.EQUALS);
