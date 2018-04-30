@@ -1,8 +1,10 @@
 JC = javac
 
 .SUFFIXES: .java .class
+
 .java.class:
 	$(JC) $*.java
+
 CLASSES = \
 	Extensions.class \
 	Exceptions.class \
@@ -18,3 +20,8 @@ Main.class: Main.java $(CLASSES)
 
 flex:
 	@jflex lexer.java
+
+build:
+	@jflex lexer.java
+	$(JC) $*.java
+	mv *.class ./Classes
