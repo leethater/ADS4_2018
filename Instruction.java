@@ -105,7 +105,7 @@ class Conditional extends Instruction{
   }
 
   public void execute(Graphics2D g, List<Identifier> map) throws Exception{
-    eval=(i2==null)?i1:(expression.value(map)!=0)?i1:i2;
-    eval.execute(g,map);
+    eval=(expression.value(map)!=0)?i1:i2;
+    if(eval!=null)eval.execute(g,map);
   }
 }

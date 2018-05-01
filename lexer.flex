@@ -25,7 +25,6 @@ blank=" "|"\n"|"\t"|"\r"
 number=[0-9]+
 hex=[0-9A-F]
 color=#{hex}{hex}{hex}{hex}{hex}{hex}
-operator="+"|"-"|"/"|"*"
 ident = [a-z][a-zA-Z_]*
 
 %%
