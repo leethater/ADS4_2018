@@ -172,7 +172,7 @@ public Expression expr() throws Exception{
         break;
       case MORE: reader.eat(Sym.MORE);
         break;
-      case EQUALS: reader.eat(Sym.EQUALS);
+      case EQUALEQUALS: reader.eat(Sym.EQUALEQUALS);
         break;
       default: throw new ParserException(reader.getLexer().getPosition()+"  Not valid operator encountered !");
     }

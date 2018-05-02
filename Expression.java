@@ -41,7 +41,7 @@ class ExpressionPlus extends Expression{
       case DIV: return a/b;
       case LESS: return Math.max(b-a,0);
       case MORE: return Math.min(b-a,0);
-      case EQUALS: return (b==a)?1:0;
+      case EQUALEQUALS: return (b==a)?1:0;
     }
     return Integer.MIN_VALUE;
   }

@@ -56,6 +56,7 @@ ident = [a-z][a-zA-Z_]*
 ")" {return new Token(Sym.RPAR);}
 "," {return new Token(Sym.COMMA);}
 ";" {return new Token(Sym.SEMIC);}
+"==" {return new Token(Sym.EQUALEQUALS);}
 "=" {return new Token(Sym.EQUALS);}
 "<" {return new Token(Sym.LESS);}
 ">" {return new Token(Sym.MORE);}

@@ -18,6 +18,7 @@ public enum Sym{
   COMMA,
   SEMIC,
   EQUALS,
+  EQUALEQUALS,
   IDENT,
   CONST,
   VAR,
