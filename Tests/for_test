@@ -1,0 +1,5 @@
+For (Var i = 0, (i<10), i = (i+1))
+  Do
+    Begin
+      FillCircle((100*i), (100*i), 50, #00FF00);
+    End;

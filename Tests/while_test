@@ -1,5 +1,7 @@
-For (Var i = 3, (i>1), i = (i-1))
+Var i = 5;
+While (i>0)
   Do
     Begin
-      FillCircle(100, 100, 50, #00FF00);
+      DrawCircle(300, 300, (50+(10*i)), #FF0000);
+      i = (i-1);
     End;
