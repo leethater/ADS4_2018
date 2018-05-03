@@ -1,7 +1,7 @@
 # ADS4_2018
 
 Projet d'analyse des données structurées en 2ème année universitaire.  
-Le projet consiste à ous implémenter un interpréteur permettant de tracer automatiquement et précisément des formes géométriques simples, en lisant des instructions dans un fichier.
+Le projet consiste à implémenter un interpréteur permettant de tracer automatiquement et précisément des formes géométriques simples, en lisant des instructions dans un fichier.
 
 ## Compilation et exécution
 Pour tous les systèmes unix,
@@ -18,7 +18,6 @@ java Main Tests/fichier_test
 nombre→ [0-9]+
 hex→ [0-9A-F]
 couleur→ #{hex}{hex}{hex}{hex}{hex}{hex}
-opérateur→ "+" | "-" | "/" | "*"
 identificateur→ [a-z][a-zA-Z_]*
 
 programme→
@@ -47,13 +46,25 @@ expr→
 ```
 
 ## Extensions ajoutées
-* Constantes
-  * Pour déclarer une constante, utilisez *Const __nom_constante__ = valeur*
 * Conditionnelles
-  * Il est possible de rajouter des conditionnelles dans votre fichier, la syntaxe : *If __expr_condition__ Then __instruction1__ Else __instruction2__ Fi*
+  * Il est possible de rajouter des conditionnelles dans votre fichier, la syntaxe :
+  ```
+  *If __expr_condition__ Then __instruction1__ Else __instruction2__ Fi*
+  ```
 * Variables
-  * Vous pouvez également utiliser des variables avec *Var __nom_variable__ = __valeur__*
+  * Vous pouvez également utiliser des variables avec
+  ```
+  *Var __nom_variable__ = __valeur__*
+  ```
 * Boucles While et For
-  * Si vous désirez employer des boucles dans le code de votre fichier, vous pouvez utiliser *While __expr_condition__ Do __instructions__* pour la boucle while() et *For(__declaration__, __expr_condition__, __incrementation__) Do*
+  * Si vous désirez employer des boucles dans le code de votre fichier, vous pouvez utiliser
+  ```
+  *While __expr_condition__ Do __instructions__*
+  ```
+   pour la boucle while() et
+   ```
+   *For(__declaration__, __expr_condition__, __incrementation__) Do*
+   ```
+   pour la boucle for().
 
 ### Ce projet a été réalisé par Faridah Akinotcho et Aliaksandr Budzko, GL HF :wink:
