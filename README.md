@@ -48,10 +48,12 @@ expr→
 
 ## Extensions ajoutées
 * Constantes
-Pour déclarer une constante, utilisez *Const __nom_constante__ = valeur*
+  * Pour déclarer une constante, utilisez *Const __nom_constante__ = valeur*
 * Conditionnelles
-Il est possible de rajouter des conditionnelles dans votre fichier, la syntaxe : *If __expr_condition__ Then __instruction1__ Else __instruction2__ Fi*
+  * Il est possible de rajouter des conditionnelles dans votre fichier, la syntaxe : *If __expr_condition__ Then __instruction1__ Else __instruction2__ Fi*
 * Variables
-Vous pouvez également utiliser des variables avec *Var __nom_variable__ = __valeur__*
+ * Vous pouvez également utiliser des variables avec *Var __nom_variable__ = __valeur__*
 * Boucles While et For
-Si vous désirez employer des boucles dans le code de votre fichier, vous pouvez utiliser *While __expr_condition__ Do __instructions__* pour la boucle while() et *For(__declaration__, __expr_condition__, __incrementation__) Do*
+  * Si vous désirez employer des boucles dans le code de votre fichier, vous pouvez utiliser *While __expr_condition__ Do __instructions__* pour la boucle while() et *For(__declaration__, __expr_condition__, __incrementation__) Do*
+
+### Ce projet a été réalisé par Faridah Akinotcho et Aliaksandr Budzko, GL HF :wink:
