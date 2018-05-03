@@ -48,7 +48,7 @@ expr→
 ## Extensions ajoutées
 * Conditionnelles
   * Il est possible de rajouter des conditionnelles dans votre fichier, la syntaxe :
-  
+
   *If __expr_condition__ Then __instruction1__ Else __instruction2__ Fi*
 
 * Variables
@@ -57,7 +57,8 @@ expr→
   *Var __nom_variable__ = __valeur__*
 
 * Boucles While et For
-  * Si vous désirez employer des boucles dans le code de votre fichier, vous pouvez utiliser
+
+  Si vous désirez employer des boucles dans le code de votre fichier, vous pouvez utiliser
 
   *While __expr_condition__ Do __instructions__*
 
