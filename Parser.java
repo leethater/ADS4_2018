@@ -8,6 +8,7 @@ class Parser{
     reader=r;
   }
 
+
 public AST progNotTerm() throws Exception{
   List<Instruction> list=instructionsList(new ArrayList<Instruction>());
   if(!reader.isEmpty()) throw new ParserException(reader.getLexer().getPosition()+"  Not valid end of file");
@@ -17,12 +18,10 @@ public AST progNotTerm() throws Exception{
 public Instruction instruction() throws Exception{
   Instruction i;
   if(reader.check(Sym.BEGIN)){
-    Token b=reader.getCurrent();
     reader.eat(Sym.BEGIN);
     List<Instruction> l=instructionsList(new ArrayList<Instruction>());
-    Token b2=reader.getCurrent();
     reader.eat(Sym.END);
-    i=new SuperInstruction(b,b2,l);
+    i=new SuperInstruction(l);
   }
   else{
     boolean b=false;
@@ -42,7 +41,6 @@ public Instruction instruction() throws Exception{
     reader.eat(Sym.IDENT);
     reader.eat(Sym.EQUALS);
     Expression e=expr();
-    //useless
     i=new Declaration(Sym.VAR,s,e);
   }
   else if(reader.check(Sym.IDENT)){
@@ -130,7 +128,6 @@ public Instruction instruction() throws Exception{
   }
   return i;
 }
-
 
 public List<Instruction> instructionsList(List<Instruction> l) throws Exception{
   Instruction i=this.instruction();
