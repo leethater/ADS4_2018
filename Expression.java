@@ -7,10 +7,6 @@ abstract class Expression{
 
   }
 
-  public String toString(){
-    return "";
-  }
-
 }
 
 class IntExpression extends Expression{
@@ -22,14 +18,6 @@ class IntExpression extends Expression{
 
   public int value(List<Identifier> list){
     return value;
-  }
-
-  public IntExpression copy(){
-    return new IntExpression(value);
-  }
-
-  public String toString(){
-    return "" + value;
   }
 }
 
@@ -45,7 +33,6 @@ class ExpressionPlus extends Expression{
 
   public int value(List<Identifier> m) throws DeclarationException{
     int a=expr1.value(m),b=expr2.value(m);
-    System.out.println(this + " " + expr1 + " " +operator.getSym()+ " "+ expr2);
     Sym sym=operator.getSym();
     switch(sym){
       case PLUS: return a+b;
@@ -54,7 +41,7 @@ class ExpressionPlus extends Expression{
       case DIV: return a/b;
       case LESS: return Math.max(b-a,0);
       case MORE: return Math.min(b-a,0);
-      case EQUALS: return (b==a)?1:0;
+      case EQUALEQUALS: return (b==a)?1:0;
     }
     return Integer.MIN_VALUE;
   }
@@ -81,7 +68,6 @@ class Identifier extends Expression{
   public int value(List<Identifier> m) throws DeclarationException{
     checkNset(m);
     return e.value(m);
-  //  return checkValue(m);
   }
 
   public Expression getExpression(){

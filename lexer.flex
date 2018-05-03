@@ -25,7 +25,6 @@ blank=" "|"\n"|"\t"|"\r"
 number=[0-9]+
 hex=[0-9A-F]
 color=#{hex}{hex}{hex}{hex}{hex}{hex}
-operator="+"|"-"|"/"|"*"
 ident = [a-z][a-zA-Z_]*
 
 %%
@@ -57,6 +56,7 @@ ident = [a-z][a-zA-Z_]*
 ")" {return new Token(Sym.RPAR);}
 "," {return new Token(Sym.COMMA);}
 ";" {return new Token(Sym.SEMIC);}
+"==" {return new Token(Sym.EQUALEQUALS);}
 "=" {return new Token(Sym.EQUALS);}
 "<" {return new Token(Sym.LESS);}
 ">" {return new Token(Sym.MORE);}
