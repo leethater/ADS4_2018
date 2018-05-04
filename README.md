@@ -31,7 +31,7 @@ instruction→
             | DrawRect (expr, expr, expr, expr, couleur)
             | FillRect (expr, expr, expr, expr, couleur)
             | Const identificateur = expr
-            | If expr Then instruction Else instruction Fi
+            | If expr Then instruction (Else instruction)| Fi
             | Var identificateur = expr
             | While expr Do instruction
             | For (Var identificateur = expr, expr, expr) Do instruction
@@ -46,11 +46,11 @@ expr→
 ```
 
 ## Extensions ajoutées
-* Conditionnelles
+* Conditionnelles sans Else
 
   Il est possible de rajouter des conditionnelles dans votre fichier, la syntaxe :
 
-  *If __expr_condition__ Then __instruction1__ Else __instruction2__ Fi*
+  *If __expr_condition__ Then __instruction1__ Fi*
 
 * Variables
 
