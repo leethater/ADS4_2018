@@ -1,10 +1,9 @@
 import java.awt.Graphics2D;
 import java.util.List;
 import java.util.ArrayList;
-class Extensions{
 
-}
 class WhileInstruction extends Instruction{
+
   protected Expression expression;
   protected Instruction instruction;
 

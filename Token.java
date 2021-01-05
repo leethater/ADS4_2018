@@ -1,4 +1,5 @@
  class Token{
+   
   protected Sym sym;
 
   public Token(Sym sym){

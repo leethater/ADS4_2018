@@ -1,6 +1,8 @@
 import java.awt.Graphics2D;
 import java.util.*;
+
 public class AST{
+  
   protected List<Instruction> list;
 
   public AST(List<Instruction> list){

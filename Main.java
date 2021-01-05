@@ -28,31 +28,31 @@ public static void main(String[] args) {
 @SuppressWarnings("serial")
 class MyCanvas extends JComponent {
 
-String filename;
+    String filename;
 
-public MyCanvas(String fname) {
-filename = fname;
-}
+    public MyCanvas(String fname) {
+    filename = fname;
+    }
 
-@Override
-public void paintComponent(Graphics g) {
-if (g instanceof Graphics2D)
-{
-  Graphics2D g2d = (Graphics2D)g;
-  File input = new File(filename);
-  try {
-  Reader reader = new FileReader(input);
-  Lexer lexer = new Lexer(reader);
-  LookAhead1 look = new LookAhead1(lexer);
-  Parser parser = new Parser(look);
-      AST ast=parser.progNotTerm();
-      ast.exec(g2d);
-      System.out.println("The file is correct");
+    @Override
+    public void paintComponent(Graphics g) {
+    if (g instanceof Graphics2D)
+    {
+    Graphics2D g2d = (Graphics2D)g;
+    File input = new File(filename);
+    try {
+    Reader reader = new FileReader(input);
+    Lexer lexer = new Lexer(reader);
+    LookAhead1 look = new LookAhead1(lexer);
+    Parser parser = new Parser(look);
+        AST ast=parser.progNotTerm();
+        ast.exec(g2d);
+        System.out.println("The file is correct");
+        }
+        catch (Exception e){
+        System.out.println("The file is not correct");
+        System.out.println(e);
+        }
     }
-    catch (Exception e){
-      System.out.println("The file is not correct");
-      System.out.println(e);
-    }
-}
 }
 }

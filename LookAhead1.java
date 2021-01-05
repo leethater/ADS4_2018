@@ -1,6 +1,7 @@
 import java.io.*;
 
 class LookAhead1  {
+  
     /* Simulating a reader class for a stream of Token */
 
     private Token current;

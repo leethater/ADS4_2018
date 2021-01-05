@@ -1,4 +1,5 @@
 import java.util.List;
+
 abstract class Expression{
 
   public abstract int value(List<Identifier> m) throws DeclarationException;
@@ -10,6 +11,7 @@ abstract class Expression{
 }
 
 class IntExpression extends Expression{
+  
   protected int value;
 
   public IntExpression(int v){

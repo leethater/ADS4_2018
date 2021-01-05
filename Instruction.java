@@ -1,11 +1,13 @@
 import java.awt.Graphics2D;
 import java.util.*;
 import java.awt.Color;
+
  abstract class Instruction{
   public abstract void execute(Graphics2D g, List<Identifier> list) throws Exception;
 }
 
 class LineInstruction extends Instruction{
+  
  protected Token method;
  protected List<Expression> expressions;
  protected ColorToken color;
